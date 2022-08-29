@@ -184,6 +184,7 @@ function Test-PRFile {
         #region 3. Checkver and 4. Autoupdate
         if ($object.checkver) {
             Write-Log 'Checkver'
+			Copy-Item (Join-Path $PSScriptRoot 'json.ps1') -Destination (Join-Path $env:SCOOP_HOME 'lib' 'json.ps1') -Force
             $outputV = @(& (Join-Path $BINARIES_FOLDER 'checkver.ps1') -App $manifest.Basename -Dir $MANIFESTS_LOCATION -Force *>&1)
             Write-log 'Output' $outputV
             
